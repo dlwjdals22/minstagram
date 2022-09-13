@@ -75,7 +75,7 @@ export default function Login() {
     <Body>
       <Bundle>
         <LoginPage>
-          <Instagram>Instagram</Instagram>
+          <Instagram>Minstagram</Instagram>
           <LoginInput
             ref={IDFocus}
             type="text"

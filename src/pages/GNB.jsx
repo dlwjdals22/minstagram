@@ -21,7 +21,7 @@ export default function GNB() {
   return (
     <Body>
       <Bundle>
-        <Instagram>Instagram</Instagram>
+        <Instagram>Minstagram</Instagram>
         <Search>
           <BsSearch opacity="50%" />
           <Input type="text" placeholder="검색" />

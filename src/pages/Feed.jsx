@@ -21,17 +21,17 @@ export default function Feed() {
   }, []);
 
   return (
-    <Test>
+    <FeedBody>
       <GNB />
       <Body>
         {picture.map((el) => {
           return <FeedPiece key={el.id} feed={el} />;
         })}
       </Body>
-    </Test>
+    </FeedBody>
   );
 }
-const Test = styled.div`
+const FeedBody = styled.div`
   width: 100vw;
 `;
 
