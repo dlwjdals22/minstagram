@@ -16,7 +16,18 @@ export default function Login() {
 
   const navigate = useNavigate();
 
+  const validID = 'min@google.com';
+  const validPassword = 'asdfASDF1!@';
+
+  useEffect(() => {
+    console.log('ID : min@google.com // Password : asdfASDF1!@');
+  }, []);
+
   const goToFeed = () => {
+    if (id !== validID || password !== validPassword) {
+      alert('ID 또는 Password를 확인해주세요.');
+      return;
+    }
     localStorage.setItem('id', id);
     localStorage.setItem('password', password);
     navigate('/feed');
@@ -128,9 +139,21 @@ export default function Login() {
           </DownloadButton>
         </Downloads>
       </Bundle>
+      <IDPassword>
+        {'ID : min@google.com \n\n Password : asdfASDF1!@'}
+      </IDPassword>
     </Body>
   );
 }
+
+const IDPassword = styled.div`
+  outline: 2px solid black;
+  padding: 30px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  white-space: pre-line;
+`;
 
 const Body = styled.div`
   display: flex;

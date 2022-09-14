@@ -50,6 +50,9 @@ const Body = styled.div`
 `;
 
 const Bundle = styled.div`
+  @media (max-width: 750px) {
+    justify-content: center;
+  }
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,7 +61,7 @@ const Bundle = styled.div`
 `;
 
 const Instagram = styled.div`
-  @media (max-width: 675px) {
+  @media (max-width: 750px) {
     font-size: 25px;
   }
   font-size: 35px;
@@ -82,12 +85,12 @@ const Icons = styled.div`
   justify-content: space-between;
   align-items: center;
   /* min-width: 180px; */
-  width: 15vw;
+  width: 200px;
 `;
 
 const Search = styled.div`
   display: flex;
-  @media (max-width: 675px) {
+  @media (max-width: 750px) {
     display: none;
     justify-content: space-between;
   }

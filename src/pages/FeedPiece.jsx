@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { BiHeart } from 'react-icons/bi';
+import { AiFillHeart } from 'react-icons/ai';
+import { AiOutlineHeart } from 'react-icons/ai';
 import { FaRegCommentDots } from 'react-icons/fa';
 import { BiPaperPlane } from 'react-icons/bi';
 import { GrBookmark } from 'react-icons/gr';
@@ -12,12 +13,24 @@ import { BsFillCircleFill } from 'react-icons/bs';
 export default function FeedPiece({ feed }) {
   const [newID, setNewID] = useState('');
   const [newComment, setNewComment] = useState('');
+  const [like, setLike] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
   const [comments, setComments] = useState([
     {
       ID: newID,
       Comment: newComment,
     },
   ]);
+
+  const clickLike = (e) => {
+    if (like === false) {
+      setLikeCount(1);
+      setLike(true);
+    } else if (like === true) {
+      setLikeCount(0);
+      setLike(false);
+    }
+  };
 
   const IDFocus = useRef();
   const CommentFocus = useRef();
@@ -62,7 +75,7 @@ export default function FeedPiece({ feed }) {
       <FeedTop key={feed.id}>
         <FeedTopLeft>
           <BsFillCircleFill size="35px" opacity="20%" />
-          <ProfileID>wanted</ProfileID>
+          <ProfileID>user</ProfileID>
         </FeedTopLeft>
         <FeedTopRight>
           <FiMoreHorizontal cursor="pointer" />
@@ -72,7 +85,21 @@ export default function FeedPiece({ feed }) {
       <FeedBottom>
         <Icons>
           <IconsLeft>
-            <BiHeart size="30px" cursor="pointer" />
+            {like === true ? (
+              <AiFillHeart
+                size="30px"
+                cursor="pointer"
+                style={{ color: 'red' }}
+                onClick={clickLike}
+              />
+            ) : (
+              <AiOutlineHeart
+                size="30px"
+                cursor="pointer"
+                onClick={clickLike}
+              />
+            )}
+
             <FaRegCommentDots size="30px" cursor="pointer" />
             <BiPaperPlane size="30px" cursor="pointer" />
           </IconsLeft>
@@ -80,7 +107,7 @@ export default function FeedPiece({ feed }) {
             <GrBookmark size="30px" cursor="pointer" />
           </IconsRight>
         </Icons>
-        <Like>좋아요 0개</Like>
+        <Like>좋아요 {likeCount}개</Like>
         <CommentGather>
           <CommentList>
             {comments.map((el, index) => {
@@ -154,12 +181,12 @@ const FeedTopRight = styled.div``;
 const Img = styled.img`
   @media (max-width: 380px) {
     width: 300px;
-    height: fit-content;
   }
   @media (max-width: 675px) {
     width: 370px;
-    height: fit-content;
   }
+  width: 600px;
+  height: fit-content;
 `;
 
 const Icons = styled.div`
