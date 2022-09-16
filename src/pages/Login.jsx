@@ -128,7 +128,8 @@ export default function Login() {
           <DownloadButton>
             <AiFillApple size="40px" />
             <DownloadDescription2>
-              App Store에서 <DoDownload>다운로드 하기</DoDownload>
+              <AppDownload>AppStore에서</AppDownload>{' '}
+              <DoDownload>다운로드 하기</DoDownload>
             </DownloadDescription2>
           </DownloadButton>
           <DownloadButton>
@@ -145,6 +146,11 @@ export default function Login() {
     </Body>
   );
 }
+
+const AppDownload = styled.div`
+  margin: 4px 0;
+  font-size: 13px;
+`;
 
 const IDPassword = styled.div`
   outline: 2px solid black;
@@ -167,8 +173,8 @@ const Body = styled.div`
 
 const LoginInput = styled.input`
   margin: 5px 0;
-  width: 20vw;
-  min-width: 320px;
+  width: 290px;
+  min-width: 200px;
   outline: ${(props) => props.outLine};
   background-color: rgba(218, 218, 218, 0.2);
   padding: 10px;
@@ -177,8 +183,8 @@ const LoginInput = styled.input`
 
 const PasswordInput = styled.input`
   margin: 5px 0;
-  width: 20vw;
-  min-width: 320px;
+  width: 290px;
+  min-width: 200px;
   outline: ${(props) => props.outLine};
   background-color: rgba(218, 218, 218, 0.2);
   padding: 10px;
@@ -200,6 +206,7 @@ const LoginPage = styled.div`
   flex-direction: column;
   padding: 50px;
   outline: rgba(0, 0, 0, 0.2) 1px solid;
+  width: 380px;
   background-color: white;
 `;
 
@@ -214,8 +221,8 @@ const Button = styled.button`
   cursor: pointer;
   margin: 20px 0;
   padding: 8px;
-  width: 20vw;
-  min-width: 320px;
+  width: 290px;
+  min-width: 200px;
   color: white;
   background-color: rgba(187, 224, 252, 0.8);
   border-radius: 5px;
@@ -226,8 +233,8 @@ const Button2 = styled.button`
   cursor: pointer;
   margin: 20px 0;
   padding: 8px;
-  width: 20vw;
-  min-width: 320px;
+  width: 290px;
+  min-width: 200px;
   color: white;
   background-color: rgba(55, 162, 245, 1);
   border-radius: 5px;
@@ -275,7 +282,7 @@ const SignInPage = styled.div`
   margin: 20px 0;
   padding: 20px 0;
   outline: 1px solid rgba(0, 0, 0, 0.2);
-  width: 100%;
+  width: 380px;
   font-size: 14px;
 `;
 
@@ -312,7 +319,7 @@ const DownloadButton = styled.div`
   flex-direction: center;
   margin: 10px;
   padding: 5px;
-  width: 180px;
+  width: 160px;
   border-radius: 8px;
   color: white;
   background-color: black;
