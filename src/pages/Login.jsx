@@ -19,10 +19,6 @@ export default function Login() {
   const validID = 'min@google.com';
   const validPassword = 'asdfASDF1!@';
 
-  useEffect(() => {
-    console.log('ID : min@google.com // Password : asdfASDF1!@');
-  }, []);
-
   const goToFeed = () => {
     if (id !== validID || password !== validPassword) {
       alert('ID 또는 Password를 확인해주세요.');
@@ -31,7 +27,6 @@ export default function Login() {
     localStorage.setItem('id', id);
     localStorage.setItem('password', password);
     navigate('/feed');
-    window.scrollTo(0.0);
   };
 
   const IDFocus = useRef();

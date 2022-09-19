@@ -15,7 +15,6 @@ export default function GNB() {
   const goToLogin = () => {
     navigate('/');
     localStorage.clear();
-    window.scrollTo(0.0);
   };
 
   return (
@@ -64,6 +63,10 @@ const Bundle = styled.div`
 const Instagram = styled.div`
   @media (max-width: 750px) {
     font-size: 25px;
+    margin-right: 30px;
+  }
+  @media (max-width: 500px) {
+    margin: 0;
   }
   font-size: 35px;
   font-family: 'Petit Formal Script', cursive;

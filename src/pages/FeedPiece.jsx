@@ -48,7 +48,7 @@ export default function FeedPiece({ feed }) {
     setNewComment(e.target.value);
     if (e.target.value === '') {
       return; // 내용 입력하지 않으면 댓글이 달리지 않게 막음
-    } else if (e.key === 'Enter' && newID.length != 0) {
+    } else if (e.key === 'Enter' && newID.length !== 0) {
       // newID 길이를 확인함으로써 닉네임을 입력하지 않으면 댓글이 달리지 않게 막음
       addComment();
       IDFocus.current.value = '';
@@ -57,6 +57,9 @@ export default function FeedPiece({ feed }) {
   };
 
   const addComment = (e) => {
+    if (newID === '' || newComment === '') {
+      return;
+    }
     setComments([
       ...comments,
       {
@@ -67,7 +70,9 @@ export default function FeedPiece({ feed }) {
     setNewID('');
     setNewComment('');
     // setNewCommentID(newCommentID + 1);
-    IDFocus.current.focus();
+    IDFocus.current.value = ''; // Input 창 비우기
+    CommentFocus.current.value = ''; // Input 창 비우기
+    IDFocus.current.focus(); // ID Input으로 포커스 이동
   };
 
   return (
@@ -130,7 +135,9 @@ export default function FeedPiece({ feed }) {
               onKeyUp={writeComment}
             />
           </CommentInputLeft>
-          <CommentInputRight onClick={addComment}>게시</CommentInputRight>
+          <CommentInputRight onClick={() => addComment()}>
+            게시
+          </CommentInputRight>
         </CommentInput>
       </FeedBottom>
     </Body>
@@ -169,6 +176,7 @@ const FeedBottom = styled.div`
 const FeedTopLeft = styled.div`
   display: flex;
   align-items: center;
+  z-index: -1;
 `;
 
 const ProfileID = styled.div`
@@ -210,11 +218,13 @@ const Like = styled.div`
   padding: 0 10px;
   color: gray;
   width: 100%;
+  user-select: none;
 `;
 
 const CommentGather = styled.div`
   margin-bottom: 40px;
   width: 100%;
+  user-select: none;
 `;
 
 const CommentList = styled.div`
@@ -257,12 +267,14 @@ const NickName = styled.input`
   margin-left: 10px;
 `;
 
-const CommentInputRight = styled.div`
+const CommentInputRight = styled.button`
   white-space: nowrap;
   color: skyblue;
   font-weight: bold;
   cursor: pointer;
   margin-left: 5px;
+  padding: 3px 10px;
+  border-radius: 10px;
 `;
 
 const WriteComment = styled.input`
